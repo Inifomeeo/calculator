@@ -6,23 +6,23 @@ let multiply = (arg1, arg2) => arg1 * arg2;
 
 let divide = (arg1, arg2) => arg1 / arg2;
 
-let firstNum;
+let firstOperand;
 let operator;
-let secondNum;
+let secondOperand;
 
-let operate = (operatorArg, numArg1, numArg2) => {
+let operate = (operatorArg, firstNum, secondNum) => {
     switch (operatorArg) {
         case "+":
-            return(add(numArg1,numArg2));
+            return(add(firstNum,secondNum));
             break;
         case "-":
-            return(subtract(numArg1, numArg2));
+            return(subtract(firstNum, secondNum));
             break;
         case "*":
-            return(multiply(numArg1, numArg2));
+            return(multiply(firstNum, secondNum));
             break;
         case "/":
-            return(divide(numArg1, numArg2));
+            return(divide(firstNum, secondNum));
             break;
         default:
             alert("Unidentified operator");
