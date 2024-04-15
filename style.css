@@ -1,0 +1,32 @@
+button {
+    border: none;
+    border-radius: 4px;
+}
+
+#clear {
+    background-color: lightgray;
+}
+
+#sign {
+    background-color: lightgray;
+}
+
+#percentage {
+    background-color: lightgray;
+}
+
+.operator {
+    background-color: #ff9500;
+}
+
+.operand {
+    background-color: lightblue;
+}
+
+#decimal {
+    background-color: lightblue;
+}
+
+#equals {
+    background-color: #ff9500;
+}
