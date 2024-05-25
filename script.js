@@ -23,6 +23,10 @@ let signFunc = (num) => {
     displayValue = (num * -1).toString();
 }
 
+let percentFunc = (num) => {
+    displayValue = (num/100).toString();
+}
+
 let operate = (op, firstNum, secondNum) => {
     switch (op) {
         case '+':
