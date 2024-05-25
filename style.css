@@ -1,4 +1,5 @@
 * {
+    box-sizing: border-box;
     font-family: "roboto";
 }
 
@@ -7,8 +8,18 @@ body {
     margin: 0;
 }
 
+#calculator {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: minmax(100px, auto) repeat(5, 100px);
+}
+
 button {
     border: 1px solid black;
+    outline: none;
 }
 
 #clear, #sign, #percentage {
