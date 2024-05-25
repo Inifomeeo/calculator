@@ -11,10 +11,24 @@ body {
 #calculator {
     display: grid;
     justify-content: center;
-    align-items: center;
+    align-content: center;
     min-height: 100vh;
     grid-template-columns: repeat(4, 100px);
-    grid-template-rows: minmax(100px, auto) repeat(5, 100px);
+    grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+}
+
+#display {
+    grid-column: 1 / -1;
+    background-color: darkgray;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 10px;
+}
+
+#zero {
+    grid-column: span 2;
 }
 
 button {
