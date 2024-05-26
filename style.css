@@ -51,3 +51,7 @@ button:active {
 .operand, #decimal {
     background-color: lightblue;
 }
+
+.operator:focus {
+    opacity: 0.5;
+}
