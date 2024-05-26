@@ -1,4 +1,4 @@
-let displayValue;
+let displayValue = '0';
 let firstOperand;
 let operator;
 let secondOperand;
@@ -6,6 +6,7 @@ let result;
 
 const numButtons = document.querySelectorAll('.operand');
 const operatorButtons = document.querySelectorAll('.operator');
+const display = document.getElementById('display');
 const allClearButton = document.querySelector('.clear');
 const signButton = document.querySelector('.sign');
 const percentButton = document.querySelector('.percentage');
@@ -19,6 +20,10 @@ let clearDisplay = () => {
     result = null;
 }
 
+let updateDisplay = () => {
+    display.innerText = displayValue;
+}
+
 let signFunc = (num) => {
     displayValue = (num * -1).toString();
 }
@@ -27,8 +32,15 @@ let percentFunc = (num) => {
     displayValue = (num/100).toString();
 }
 
-let operate = (op, firstNum, secondNum) => {
-    switch (op) {
+numButtons.forEach(num => {
+    num.addEventListener('click', () => {
+        appendNum(num.innerText);
+        updateDisplay();
+    })
+})
+
+let operate = (operand, firstNum, secondNum) => {
+    switch (operand) {
         case '+':
             return firstNum + secondNum;
             break;
