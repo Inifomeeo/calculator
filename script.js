@@ -24,6 +24,10 @@ let updateDisplay = () => {
     display.innerText = displayValue;
 }
 
+let appendNum = (num) => {
+    displayValue = num;
+}
+
 let signFunc = (num) => {
     displayValue = (num * -1).toString();
 }
