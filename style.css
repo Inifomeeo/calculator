@@ -13,8 +13,8 @@ body {
     justify-content: center;
     align-content: center;
     min-height: 100vh;
-    grid-template-columns: repeat(4, 100px);
-    grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+    grid-template-columns: repeat(4, 80px);
+    grid-template-rows: minmax(100px, auto) repeat(5, 80px);
 }
 
 #display {
@@ -34,6 +34,10 @@ body {
 button {
     border: 1px solid black;
     outline: none;
+}
+
+button:active {
+    opacity: 0.5;
 }
 
 #clear, #sign, #percentage {
