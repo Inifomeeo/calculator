@@ -1,4 +1,4 @@
-let displayValue = '0';
+let displayValue = '';
 let firstOperand;
 let operator;
 let secondOperand;
@@ -13,7 +13,7 @@ const percentButton = document.querySelector('.percentage');
 const equalsButton = document.querySelector('.equals');
 
 let clearDisplay = () => {
-    displayValue = '0';
+    displayValue = '';
     firstOperand = null;
     secondOperand = null;
     operator = null;
@@ -25,7 +25,8 @@ let updateDisplay = () => {
 }
 
 let appendNum = (num) => {
-    displayValue = num;
+    if(num === '.' && displayValue.includes('.')) {return}
+    displayValue = displayValue.toString() + num.toString();
 }
 
 let signFunc = (num) => {
@@ -36,12 +37,16 @@ let percentFunc = (num) => {
     displayValue = (num/100).toString();
 }
 
-numButtons.forEach(num => {
-    num.addEventListener('click', () => {
-        appendNum(num.innerText);
-        updateDisplay();
+let clickBtn = () => {
+    numButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            appendNum(btn.innerText);
+            updateDisplay();
+        })
     })
-})
+}
+
+clickBtn();
 
 let operate = (operand, firstNum, secondNum) => {
     switch (operand) {
