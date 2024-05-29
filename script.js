@@ -1,7 +1,6 @@
 let previousOperand = '';
 let currentOperand = '';
 let operator;
-let result;
 
 const previousDisplay = document.getElementById('previous-operand');
 const currentDisplay = document.getElementById('current-operand');
@@ -9,10 +8,9 @@ const currentDisplay = document.getElementById('current-operand');
 const buttons = document.querySelectorAll('button');
 
 let clearDisplay = () => {
-    previousOperand = '0';
-    currentOperand = '0';
+    previousOperand = '';
+    currentOperand = '';
     operator = null;
-    result = null;
 }
 
 let updateDisplay = () => {
@@ -55,7 +53,10 @@ let clickBtn = () => {
             } else if(btn.classList.contains('operator')) {
                 useOperator(btn.innerText);
                 updateDisplay();
-            } else if(btn.classList.contains('equals')) {
+            } else if(btn.classList.contains('clear')) {
+                clearDisplay();
+                updateDisplay();
+            }  else if(btn.classList.contains('equals')) {
                 equalsFunction();
                 updateDisplay();
             }
