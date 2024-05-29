@@ -4,7 +4,6 @@ let operator;
 
 const previousDisplay = document.getElementById('previous-operand');
 const currentDisplay = document.getElementById('current-operand');
-
 const buttons = document.querySelectorAll('button');
 
 let clearDisplay = () => {
@@ -26,14 +25,14 @@ let appendNum = (num) => {
 let useOperator = (op) => {
     if(currentOperand === '') {return}
     if(previousOperand !== '') {
-        equalsFunction();
+        computeResult();
     }
+    operator = op;
     previousOperand = currentOperand;
     currentOperand = '';
-    operator = op;
 }
 
-let equalsFunction = () => {
+let computeResult = () => {
     const prev = parseFloat(previousOperand);
     const curr = parseFloat(currentOperand);
 
@@ -44,12 +43,12 @@ let equalsFunction = () => {
     previousOperand = ''
 }
 
-let signFunc = () => {
+let changeSign = () => {
     const curr = parseFloat(currentOperand);
     currentOperand = (curr * -1);
 }
 
-let percentFunc = () => {
+let toPercent = () => {
     const curr = parseFloat(currentOperand);
     currentOperand = (curr/100);
 }
@@ -67,13 +66,13 @@ let clickBtn = () => {
                 clearDisplay();
                 updateDisplay();
             } else if(btn.classList.contains('sign')) {
-                signFunc();
+                changeSign();
                 updateDisplay();
             } else if(btn.classList.contains('percentage')) {
-                percentFunc();
+                toPercent();
                 updateDisplay();
             } else if(btn.classList.contains('equals')) {
-                equalsFunction();
+                computeResult();
                 updateDisplay();
             }
         })
