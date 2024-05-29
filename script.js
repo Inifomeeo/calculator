@@ -44,6 +44,11 @@ let equalsFunction = () => {
     previousOperand = ''
 }
 
+let signFunc = () => {
+    const curr = parseFloat(currentOperand);
+    currentOperand = (curr * -1);
+}
+
 let clickBtn = () => {
     buttons.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -56,7 +61,10 @@ let clickBtn = () => {
             } else if(btn.classList.contains('clear')) {
                 clearDisplay();
                 updateDisplay();
-            }  else if(btn.classList.contains('equals')) {
+            } else if(btn.classList.contains('sign')) {
+                signFunc();
+                updateDisplay();
+            } else if(btn.classList.contains('equals')) {
                 equalsFunction();
                 updateDisplay();
             }
