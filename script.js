@@ -49,6 +49,11 @@ let signFunc = () => {
     currentOperand = (curr * -1);
 }
 
+let percentFunc = () => {
+    const curr = parseFloat(currentOperand);
+    currentOperand = (curr/100);
+}
+
 let clickBtn = () => {
     buttons.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -63,6 +68,9 @@ let clickBtn = () => {
                 updateDisplay();
             } else if(btn.classList.contains('sign')) {
                 signFunc();
+                updateDisplay();
+            } else if(btn.classList.contains('percentage')) {
+                percentFunc();
                 updateDisplay();
             } else if(btn.classList.contains('equals')) {
                 equalsFunction();
