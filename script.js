@@ -1,55 +1,72 @@
-let displayValue = '';
-let firstOperand;
+let previousOperand = '';
+let currentOperand = '';
 let operator;
-let secondOperand;
 let result;
 
-const numButtons = document.querySelectorAll('.operand');
-const operatorButtons = document.querySelectorAll('.operator');
-const display = document.getElementById('display');
-const allClearButton = document.querySelector('.clear');
-const signButton = document.querySelector('.sign');
-const percentButton = document.querySelector('.percentage');
-const equalsButton = document.querySelector('.equals');
+const previousDisplay = document.getElementById('previous-operand');
+const currentDisplay = document.getElementById('current-operand');
+
+const buttons = document.querySelectorAll('button');
 
 let clearDisplay = () => {
-    displayValue = '';
-    firstOperand = null;
-    secondOperand = null;
+    previousOperand = '0';
+    currentOperand = '0';
     operator = null;
     result = null;
 }
 
 let updateDisplay = () => {
-    display.innerText = displayValue;
+    currentDisplay.innerText = currentOperand;
+    previousDisplay.innerText = previousOperand;
 }
 
 let appendNum = (num) => {
-    if(num === '.' && displayValue.includes('.')) {return}
-    displayValue = displayValue.toString() + num.toString();
+    if(num === '.' && currentOperand.includes('.')) {return}
+    currentOperand = currentOperand.toString() + num.toString();
 }
 
-let signFunc = (num) => {
-    displayValue = (num * -1).toString();
+let useOperator = (op) => {
+    if(currentOperand === '') {return}
+    if(previousOperand !== '') {
+        equalsFunction();
+    }
+    previousOperand = currentOperand;
+    currentOperand = '';
+    operator = op;
 }
 
-let percentFunc = (num) => {
-    displayValue = (num/100).toString();
+let equalsFunction = () => {
+    const prev = parseFloat(previousOperand);
+    const curr = parseFloat(currentOperand);
+
+    if (isNaN(prev) || isNaN(curr)) {return}
+    
+    currentOperand = operate(operator, prev, curr);
+    operator = undefined;
+    previousOperand = ''
 }
 
 let clickBtn = () => {
-    numButtons.forEach(btn => {
+    buttons.forEach(btn => {
         btn.addEventListener('click', () => {
-            appendNum(btn.innerText);
-            updateDisplay();
+            if(btn.classList.contains('operand')) {
+                appendNum(btn.innerText);
+                updateDisplay();
+            } else if(btn.classList.contains('operator')) {
+                useOperator(btn.innerText);
+                updateDisplay();
+            } else if(btn.classList.contains('equals')) {
+                equalsFunction();
+                updateDisplay();
+            }
         })
     })
 }
 
 clickBtn();
 
-let operate = (operand, firstNum, secondNum) => {
-    switch (operand) {
+let operate = (ope, firstNum, secondNum) => {
+    switch (ope) {
         case '+':
             return firstNum + secondNum;
             break;
